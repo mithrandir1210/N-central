@@ -10,7 +10,7 @@ foreach ($import in @($publicFunctions + $privateFunctions))
         . $import.FullName
     }
     catch {
-        throw "Could not import function $($import.FullName): $_"
+        throw "Failed to import $($import.FullName): $_"
     }
 }
 
