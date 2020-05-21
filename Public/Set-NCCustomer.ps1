@@ -126,7 +126,7 @@ Param (
         
         $isNewCustomerData = $false
 
-        if (! ($allCustomers = Get-NCCache -Path $Global:ncCache -Age 24 -Property Customers) ) {
+        if (! ($allCustomers = Import-NCCache -Path $Global:ncCache -Age 24 -Property Customers) ) {
             Write-Verbose "Customers not found in cache. Retrieving customers."
             $allCustomers = Get-NCCustomer
             $isNewCustomerData = $true
