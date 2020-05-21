@@ -1,3 +1,4 @@
+function ConvertTo-NCSettings {
 <#
 .SYNOPSIS
     Converts a basic hashtable to an array containing objects of type "tKeyPair" or "tKeyValue".
@@ -22,7 +23,6 @@
     Creates an array with one tKeyPair object containing the key "customerID" and the value 50.
 #>
 
-function ConvertTo-NCSettings {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]

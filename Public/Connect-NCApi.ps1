@@ -1,3 +1,4 @@
+function Connect-NCApi {
 <#
 .SYNOPSIS
     Initializes the N-central API connection. This must be run before any other cmdlet.
@@ -28,7 +29,7 @@
 
     You will be prompted for the Wsdl file's URI, but not the API credentials.
 #>
-function Connect-NCApi {
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$false)]
