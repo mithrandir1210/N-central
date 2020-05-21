@@ -1,7 +1,7 @@
 function ConvertTo-NCSettings {
 <#
 .SYNOPSIS
-    Converts a basic hashtable to an array containing objects of type "tKeyPair" or "tKeyValue".
+    Converts a hashtable or array of hashtables to an array containing objects of type "tKeyPair" or "tKeyValue".
     
 .DESCRIPTION
     Retrieves the current API connection's namespace, creates a new tKeyPair or tKeyValue object

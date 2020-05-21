@@ -1,31 +1,48 @@
 function Import-NCCache {
 <#
 .SYNOPSIS
-    Imports the data within the cahce file  
+    Retrieves some or all of the data within the cache file.
     
 .DESCRIPTION
-    Retrieve the 
+    Retrieves some or all of the data within the cache file. 
     
-.PARAMETER
-    
+.PARAMETER Path
+    The full path to the XML cache file.
+
+.PARAMETER Property
+    Only retrieve the data within the specified property from the cache.
+
+.PARAMETER Age
+    The age in hours for which to retrieve data from the cache. If the data you are trying to 
+    retrieve has not been updated in the amount of time specified, no data will be returned.
     
 .EXAMPLE
+    $cacheData = Import-NCCache -Path $Global:ncCache -Age 12
+
+    Save the entire cache to the $cacheData variable if the entire cache has been updated in the 
+    last 12 hours.
+
+.EXAMPLE 
+    $cacheData = Import-NCCache -Path $Global:ncCache -Property Customers -Age 24
+
+    Save the Customers property of the cache to the $cacheData variable if it has been updated in 
+    the last 24 hours.
     
 #>
 
 [CmdletBinding()]
 Param (
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory=$false)]
+    [ValidateNotNullOrEmpty()]
     [string]
-    $Path,
+    $Path = $Global:ncCache,
 
     [Parameter(Mandatory=$false)]
-    [string[]]
+    [string]
     $Property,
 
     [Parameter(Mandatory=$false)]
     [uint64]
-    # Hours
     $Age = 24
 )
 
@@ -35,7 +52,7 @@ Param (
 
     if ($Property) {
         if ($cache.$Property.LastUpdate -lt $expiration) {
-            return $cache.$Property.Value
+            return $Property
         }
     } elseif ($cache.LastUpdate -lt $expiration) {
         return $cache

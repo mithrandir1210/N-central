@@ -1,4 +1,18 @@
 function Get-NCAccessGroup {
+<#
+.SYNOPSIS
+        
+    
+.DESCRIPTION
+    
+    
+.PARAMETER
+    
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]

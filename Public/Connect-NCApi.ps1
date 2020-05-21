@@ -4,15 +4,25 @@ function Connect-NCApi {
     Initializes the N-central API connection. This must be run before any other cmdlet.
 
 .DESCRIPTION
-    You will be prompted for credentials and the WSDL file's URI if no arguments are supplied. To
-    execute this cmdlet in "quiet" mode, use -Credential and -Wsdl.
+    Initializes the N-central API connection. This must be run before any other cmdlet. You will be
+    prompted for credentials and the WSDL file's URI if no arguments are supplied. To execute this 
+    cmdlet in "quiet" mode, use -Credential and -Wsdl.
 
 .PARAMETER Credential
     The N-central API credentials. The role assigned to this user in N-central will determine
-    what cmdlets you can use. 
+    what actions you can take (read/write) and what customer data you can access.
 
 .PARAMETER Wsdl
-    The WSDL file's URI.
+    The URI of the WSDL file. To find this, browse to the root address of your N-central server 
+    (https://nc.mycompany.com) and add "/dms" to the end of the URI. From there, click on 
+    "External API's WSDL" and copy/paste that URI.
+
+.PARAMETER Cache    
+    The full path to the XML cache file. Data will be cached to it as you use the module to speed up 
+    certain cmdlets.
+
+.PARAMETER Force
+    The cache file will be overwritten and regenerated.
 
 .EXAMPLE
     Connect-NCApi
