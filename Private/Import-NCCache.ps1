@@ -1,4 +1,18 @@
-function Get-NCCache {
+function Import-NCCache {
+<#
+.SYNOPSIS
+    Imports the data within the cahce file  
+    
+.DESCRIPTION
+    Retrieve the 
+    
+.PARAMETER
+    
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]
