@@ -1,4 +1,17 @@
 function Find-ObjectByProperty {
+<#
+.SYNOPSIS
+    
+    
+.DESCRIPTION
+    
+    
+.PARAMETER
+    
+    
+.EXAMPLE
+    
+#>
 
 [CmdletBinding()]
 Param (
