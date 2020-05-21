@@ -1,7 +1,8 @@
 function Find-ObjectByProperty {
+
 [CmdletBinding()]
 Param (
-    [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+    [Parameter(Mandatory=$true)]
     [object[]]
     $InputObject,
 
