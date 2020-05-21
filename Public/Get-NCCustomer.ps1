@@ -1,4 +1,18 @@
 function Get-NCCustomer {
+<#
+.SYNOPSIS
+    
+    
+.DESCRIPTION
+    
+    
+.PARAMETER
+    
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding(DefaultParameterSetName=' ')]
 Param (
     [Parameter(Mandatory=$true, ParameterSetName='ListChildren')]
