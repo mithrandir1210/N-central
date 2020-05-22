@@ -1,4 +1,16 @@
 function Get-NCDeviceStatus {
+<#
+.SYNOPSIS
+    Retrieves the status information of the components of a device that is displayed in the Status
+    tab of the device in the N-central UI.  
+    
+.PARAMETER DeviceId
+    One or more device IDs for which to retrieve the status.
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]

@@ -1,4 +1,72 @@
 function Set-NCCustomer {
+<#
+.SYNOPSIS
+    Updates a Customer or Site in the MSP N-central server.
+    
+.PARAMETER CustomerName
+    Desired name for the new customer or site.
+
+.PARAMETER ParentId
+    The customer ID of the parent service organization or parent customer for the new customer/site.
+
+.PARAMETER ZipCode
+    Customer's zip/postal code.
+
+.PARAMETER Street1
+    Address line 1 for the customer.
+
+.PARAMETER Street2
+    Address line 2 for the customer.
+
+.PARAMETER City
+    Customer's city.
+
+.PARAMETER State
+    Customer's state/province.
+
+.PARAMETER Phone
+    Phone number of the customer.
+
+.PARAMETER Country
+    Customer's country.
+
+.PARAMETER ExternalId
+    An external reference id.
+
+.PARAMETER ExternalId2
+    A secondary external reference id.
+
+.PARAMETER ContactFirstName
+    Customer contact's first name.
+
+.PARAMETER ContactLastName
+    Customer contact's last name.
+
+.PARAMETER ContactTitle
+    Customer contact's title.
+
+.PARAMETER ContactDepartment
+    Customer contact's department.
+
+.PARAMETER ContactPhone
+    Customer contact's telephone number.
+
+.PARAMETER ContactExtension
+    Customer contact's telephone extension.
+
+.PARAMETER ContactEmail
+    Customer contact's email.
+
+.PARAMETER LicenseType
+    The default license type of new devices for the customer.
+    
+.OUTPUTS 
+    The customer ID number of the new customer/site. 
+
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$false)]

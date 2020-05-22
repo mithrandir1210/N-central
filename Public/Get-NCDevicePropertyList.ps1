@@ -1,8 +1,30 @@
 function Get-NCDevicePropertyList {
+<#
+.SYNOPSIS
+    Retrieves a list of the custom device properties for the specified devices.
+    
+.PARAMETER DeviceId
+    One or more device IDs for which to retrieve custom device properties for.
+
+.PARAMETER DeviceName
+    One or more device names for which to retrieve custom device properties for.
+
+.PARAMETER FilterId
+    One or more filter IDs for which to retrieve custom device properties for.
+
+.PARAMETER FilterName
+    One or more filter names for which to retrieve custom device properties for.
+
+.PARAMETER ReverseOrder
+    Reverse the sorting order (alphabetically).
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$false, ValueFromPipelineByPropertyName=$true)]
-    [Alias('deviceid')]
     [uint64[]]
     $DeviceId,
 

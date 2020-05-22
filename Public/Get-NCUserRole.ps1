@@ -1,4 +1,19 @@
 function Get-NCUserRole {
+<#
+.SYNOPSIS
+    Retrieves the data for a specified user role.
+    
+.PARAMETER UserRoleId
+    The role ID for which to retrieve data for.
+
+.PARAMETER CustomerId
+    A customer ID for which role is retrieved. The customer ID is used to determine if role is 
+    modifiable at this level or not.
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]

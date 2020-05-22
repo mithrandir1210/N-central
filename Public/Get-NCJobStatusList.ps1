@@ -1,4 +1,15 @@
 function Get-NCJobStatusList {
+<#
+.SYNOPSIS
+    Retrieves the data about job statuses based on the customer ID attribute.
+    
+.PARAMETER CustomerId
+    A valid customer or site ID.
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]

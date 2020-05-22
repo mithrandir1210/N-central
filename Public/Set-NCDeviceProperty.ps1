@@ -1,4 +1,18 @@
 function Set-NCDeviceProperty {
+<#
+.SYNOPSIS
+    Modifies the custom device properties.
+    
+.DESCRIPTION
+    
+    
+.PARAMETER
+    
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true, ParameterSetName='Set1')]

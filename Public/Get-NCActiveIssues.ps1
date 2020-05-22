@@ -10,19 +10,19 @@ function Get-NCActiveIssues {
 
 .PARAMETER SearchBy
     A value to search the SO, site, device, deviceClass, service, transitionTime, notification, 
-    features, deviceID, or ip address
+    features, deviceID, or ip address.
 
 .PARAMETER OrderBy
-    The column of the Active Issues table to order the results by
+    The column of the Active Issues table to order the results by.
 
 .PARAMETER StatusFilter
-    Filter by the monitoring status of the active issue
+    Filter by the monitoring status of the active issue.
 
 .PARAMETER NotificationFilter
-    Filter by the notification status of the active issue
+    Filter by the notification status of the active issue.
 
 .PARAMETER ReverseOrder
-    Reverse the sorting order
+    Reverse the sorting order.
     
 .EXAMPLE
     
