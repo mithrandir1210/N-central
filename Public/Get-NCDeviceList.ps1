@@ -2,7 +2,7 @@ function Get-NCDeviceList {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true)]
-    [int[]]
+    [uint64[]]
     $CustomerId = 50
 )
 

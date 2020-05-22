@@ -23,11 +23,11 @@ function Get-NCAccessGroup {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]
-    [int]
+    [uint64]
     $GroupId,
 
     [Parameter(Mandatory=$false)]
-    [int]
+    [uint64]
     $CustomerId = 50,
 
     [Parameter(Mandatory=$false)]

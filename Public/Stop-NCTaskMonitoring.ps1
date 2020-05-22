@@ -2,7 +2,7 @@ function Stop-NCTaskMonitoring {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]
-    [int[]]
+    [uint64[]]
     $TaskId
 )
     Confirm-NCConnection

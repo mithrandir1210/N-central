@@ -80,7 +80,7 @@ Param (
                 }
                 # Convert to int if all numbers
                 if ($property.Value -match "^\d+$") {
-                    $newValue = [int] $newValue
+                    $newValue = [uint64] $newValue
                 }
             }
 

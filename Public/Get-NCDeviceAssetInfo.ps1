@@ -8,7 +8,7 @@ Param (
 
     [Parameter(Mandatory=$true, ParameterSetName='Optional1', ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true)]
     [Alias('deviceid')]
-    [int[]]
+    [uint64[]]
     $TargetByDeviceId,
 
     [Parameter(Mandatory=$true, ParameterSetName='Optional2', ValueFromPipelineByPropertyName=$true)]
@@ -17,7 +17,7 @@ Param (
     $TargetByDeviceName,
 
     [Parameter(Mandatory=$true, ParameterSetName='Optional3')]
-    [int[]]
+    [uint64[]]
     $TargetByFilterId,
 
     [Parameter(Mandatory=$true, ParameterSetName='Optional4')]

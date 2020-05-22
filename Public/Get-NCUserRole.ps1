@@ -2,11 +2,11 @@ function Get-NCUserRole {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]
-    [int]
+    [uint64]
     $UserRoleId,
 
     [Parameter(Mandatory=$false)]
-    [int]
+    [uint64]
     $CustomerId
 )
     Confirm-NCConnection

@@ -2,11 +2,11 @@ function Get-NCAccessGroupList {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$false)]
-    [int]
+    [uint64]
     $CustomerId = 50,
 
     [Parameter(Mandatory=$false)]
-    [int]
+    [uint64]
     $Offset,
 
     [Parameter(Mandatory=$false)]

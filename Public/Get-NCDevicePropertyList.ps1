@@ -3,7 +3,7 @@ function Get-NCDevicePropertyList {
 Param (
     [Parameter(Mandatory=$false, ValueFromPipelineByPropertyName=$true)]
     [Alias('deviceid')]
-    [int[]]
+    [uint64[]]
     $DeviceId,
 
     [Parameter(Mandatory=$false)]
@@ -12,7 +12,7 @@ Param (
     $DeviceName,
 
     [Parameter(Mandatory=$false)]
-    [int[]]
+    [uint64[]]
     $FilterId,
 
     [Parameter(Mandatory=$false)]

@@ -2,11 +2,11 @@ function Get-NCDevice {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$false, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true)]
-    [int[]]
+    [uint64[]]
     $DeviceId,
     
     [Parameter(Mandatory=$false, ValueFromPipelineByPropertyName=$true)]
-    [int[]]
+    [uint64[]]
     $ApplianceId
 )
 

@@ -2,7 +2,7 @@ function Get-NCActiveIssues {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$false, ValueFromPipelineByPropertyName=$true)]
-    [int[]]
+    [uint64[]]
     $CustomerId = 50,
 
     [Parameter(Mandatory=$false)]

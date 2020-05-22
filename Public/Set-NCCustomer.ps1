@@ -8,12 +8,12 @@ Param (
 
     [Parameter(Mandatory=$true, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true)]
     [ValidateNotNullOrEmpty()]
-    [int[]]
+    [uint64[]]
     $CustomerId,
 
     [Parameter(Mandatory=$false)]
     [ValidateNotNullOrEmpty()]
-    [int]
+    [uint64]
     $ParentId,
 
     [Parameter(Mandatory=$false)]

@@ -7,7 +7,7 @@ Param (
     $CustomerName,
 
     [Parameter(Mandatory=$true)]
-    [int]
+    [uint64]
     $ParentId,
 
     [Parameter(Mandatory=$false)]

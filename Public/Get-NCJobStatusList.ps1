@@ -2,7 +2,7 @@ function Get-NCJobStatusList {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]
-    [int]
+    [uint64]
     $CustomerId
 )
     Confirm-NCConnection

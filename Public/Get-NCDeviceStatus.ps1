@@ -2,7 +2,7 @@ function Get-NCDeviceStatus {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]
-    [int]
+    [uint64]
     $DeviceId
 )
     Confirm-NCConnection

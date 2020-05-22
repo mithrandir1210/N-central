@@ -42,7 +42,7 @@ Param (
     $Property,
 
     [Parameter(Mandatory=$false)]
-    [uint64]
+    [int]
     $Age = 24
 )
 

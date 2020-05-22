@@ -2,7 +2,7 @@ function Set-NCDeviceProperty {
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true, ParameterSetName='Set1')]
-    [int[]]
+    [uint64[]]
     $DeviceId,
 
     [Parameter(Mandatory=$true, ParameterSetName='Set2')]
@@ -10,7 +10,7 @@ Param (
     $DeviceName,
 
     [Parameter(Mandatory=$true, ParameterSetName='Set3')]
-    [int[]]
+    [uint64[]]
     $FilterId,
 
     [Parameter(Mandatory=$true, ParameterSetName='Set4')]

@@ -18,7 +18,7 @@ Param (
     [Parameter(Mandatory=$true, ParameterSetName='ListChildren')]
     [Parameter(Mandatory=$false, ParameterSetName='Search')]
     [ValidateNotNullOrEmpty()]
-    [int]
+    [uint64]
     $CustomerId,
 
     [Parameter(Mandatory=$false, ParameterSetName='Search')]
