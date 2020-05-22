@@ -59,11 +59,13 @@ Param (
     $Country,
 
     [Parameter(Mandatory=$false)]
+    [ValidateLength(1,100)]
     [ValidateNotNullOrEmpty()]
     [string]
     $ExternalId,
 
     [Parameter(Mandatory=$false)]
+    [ValidateLength(1,100)]
     [ValidateNotNullOrEmpty()]
     [string]
     $ExternalId2,
