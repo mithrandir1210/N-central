@@ -44,11 +44,11 @@ function Connect-NCApi {
 Param (
     [Parameter(Mandatory=$false)]
     [pscredential]
-    $Credential = (Get-Credential -Message 'N-central API Credentials'),
+    $Credential,
 
     [Parameter(Mandatory=$false)]
     [string]
-    $Wsdl = (Read-Host -Prompt 'N-central WSDL Uri'),
+    $Wsdl,
 
     [Parameter(Mandatory=$false)]
     [string]
@@ -56,15 +56,33 @@ Param (
 
     [Parameter(Mandatory=$false)]
     [switch]
+    $ReuseConnection,
+
+    [Parameter(Mandatory=$false)]
+    [switch]
     $Force
 )
 
-    $Global:ncNamespace = "Ncentral" + ([guid]::NewGuid()).ToString().Substring(25)
-    $Global:ncCache = $Cache
+    if ($ReuseConnection -and $Global:ncConnection) {
+        Write-Verbose "Attempting to reuse the connection"
+    } else {
+        if (! $Credential) {
+            $Credential = Get-Credential -Message 'N-central API Credentials'
+        }
+        if (! $Wsdl) {
+            $Wsdl = Read-Host -Prompt 'N-central WSDL Uri'
+        }
+        
+        Write-Verbose "Creating new connection"
+
+        $Global:ncNamespace = "Ncentral" + ([guid]::NewGuid()).ToString().Substring(25)
+
+        $Global:ncCache = $Cache
     
-    # Setup new proxy object to use for later methods
-    $Global:ncConnection = New-WebServiceProxy -Uri $Wsdl -Namespace ($Global:ncNamespace) -Credential $Credential
-    
+        # Setup new proxy object to use for later methods
+        $Global:ncConnection = New-WebServiceProxy -Uri $Wsdl -Namespace ($Global:ncNamespace) -Credential $Credential
+    }
+
     # Test connection by querying customer list (SOs only for faster return)
     $username = $Global:ncConnection.Credentials.Username
     $password = $Global:ncConnection.Credentials.Password
