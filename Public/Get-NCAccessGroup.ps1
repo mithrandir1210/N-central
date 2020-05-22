@@ -6,11 +6,18 @@ function Get-NCAccessGroup {
 .DESCRIPTION
     
     
-.PARAMETER
+.PARAMETER GroupId
+
+
+.PARAMETER CustomerId
+
+
+.PARAMETER CustomerGroup
     
     
 .EXAMPLE
-    
+        
+
 #>
 
 [CmdletBinding()]
