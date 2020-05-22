@@ -1,9 +1,39 @@
 function Get-NCActiveIssues {
+<#
+.SYNOPSIS
+    Retrieves a list of all active issues and related information associated with the specified 
+    Site, Customer, SO, or the entire system.
+    
+.PARAMETER CustomerId
+    The ID of the Site, Customer, or SO for which to retrieve active issues for. Use 1 to return
+    active issues for every SO, customer, and site.
+
+.PARAMETER SearchBy
+    A value to search the SO, site, device, deviceClass, service, transitionTime, notification, 
+    features, deviceID, or ip address
+
+.PARAMETER OrderBy
+    The column of the Active Issues table to order the results by
+
+.PARAMETER StatusFilter
+    Filter by the monitoring status of the active issue
+
+.PARAMETER NotificationFilter
+    Filter by the notification status of the active issue
+
+.PARAMETER ReverseOrder
+    Reverse the sorting order
+    
+.EXAMPLE
+    
+
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$false, ValueFromPipelineByPropertyName=$true)]
     [uint64[]]
-    $CustomerId = 50,
+    $CustomerId = 1,
 
     [Parameter(Mandatory=$false)]
     [string]
@@ -13,7 +43,7 @@ Param (
     [ValidateSet("customername", "devicename", "servicename", "status", "transitiontime", "numberofacknoledgednotification",
             "serviceorganization", "deviceclass", "licensemode", "endpointsecurity")]
     [string]
-    $OrderBy,
+    $OrderBy = 'customername',
 
     [Parameter(Mandatory=$false)]
     [ValidateSet("no data", "stale", "normal", "warning", "failed", "misconfigured", "disconnected")]

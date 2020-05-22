@@ -1,16 +1,28 @@
 function Get-NCCustomer {
 <#
 .SYNOPSIS
+    Retrieves one or more customers.    
     
-    
-.DESCRIPTION
-    
-    
-.PARAMETER
-    
+.PARAMETER CustomerId
+    The customer ID to retrieve.
+
+.PARAMETER CustomerName
+    Retrieve customers by name. Wildcards are supported.
+
+.PARAMETER ListSOs
+    Retrieve the service organizations only.
+
+.PARAMETER ListChildren
+    Retrieve all customers and/or sites with a parentid equal to the customer ID provided.
+
+.PARAMETER NoCacheUpdate
+    Do not update the cache with the results. This should be used if calling the Update-NCCache
+    function from within an N-central module function (internal use). If you are using this 
+    function to manually update the cache, do not use this switch.
     
 .EXAMPLE
     
+
 #>
 
 [CmdletBinding(DefaultParameterSetName='Default')]

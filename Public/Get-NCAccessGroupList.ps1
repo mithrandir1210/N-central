@@ -1,4 +1,27 @@
 function Get-NCAccessGroupList {
+<#
+.SYNOPSIS
+    Retrieves a list of the access groups based on the customerID attribute.
+    
+.PARAMETER CustomerId
+    
+
+.PARAMETER Offset
+    Number determining first group that should be displayed. 
+
+.PARAMETER Limit
+    Number determining the number of results returned.
+
+.PARAMETER OrderBy
+    The sorting order the results are returned in.
+
+.PARAMETER ReverseOrder
+    Reverse the sorting order
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$false)]
@@ -7,16 +30,16 @@ Param (
 
     [Parameter(Mandatory=$false)]
     [uint64]
-    $Offset,
+    $Offset = 0,
 
     [Parameter(Mandatory=$false)]
-    [int]
-    $Limit,
+    [uint64]
+    $Limit = 0,
 
     [Parameter(Mandatory=$false)]
     [ValidateSet('groupname','groupid','grouptype','customerid','description','readonly','usernames')]
     [string]
-    $OrderBy,
+    $OrderBy = 'groupname',
 
     [Parameter(Mandatory=$false)]
     [switch]

@@ -1,4 +1,19 @@
 function Get-NCDevice {
+<#
+.SYNOPSIS  
+    Retrieves a one or more user-specified devices.
+
+.PARAMETER DeviceId
+    One or more device IDs for which to retrieve data for.
+
+.PARAMETER ApplianceId
+    One or more appliance IDs for which to retrieve data for.
+    
+.EXAMPLE
+    
+
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$false, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true)]

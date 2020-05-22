@@ -1,22 +1,19 @@
 function Get-NCAccessGroup {
 <#
 .SYNOPSIS
-    Retrieves the access groups created at the specified customer level.
-    
-.DESCRIPTION
-    
-    
-.PARAMETER GroupId
+    Retrieves the data for the specified access group.
 
+.PARAMETER GroupId
+    A group ID for which to retrieve data for.
 
 .PARAMETER CustomerId
-
+    A customer ID the request is made for.
 
 .PARAMETER CustomerGroup
-    
+    Determine if the group retrieved is customer or device access group. 
     
 .EXAMPLE
-        
+    
 
 #>
 
