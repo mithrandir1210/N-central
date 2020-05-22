@@ -1,7 +1,7 @@
 function Get-NCAccessGroup {
 <#
 .SYNOPSIS
-        
+    Retrieves the access groups created at the specified customer level.
     
 .DESCRIPTION
     

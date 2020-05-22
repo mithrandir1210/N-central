@@ -1,7 +1,8 @@
 function Update-NCCache {
-[CmdletBinding()]
+[CmdletBinding(DefaultParameterSetName='UpdateAll')]
 Param (
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory=$true, ParameterSetName='UpdateAll')]
+    [Parameter(Mandatory=$true, ParameterSetName='UpdateProperty')]
     [string]
     $Path,
 
@@ -20,24 +21,22 @@ Param (
     $today = Get-Date
 
     # Create new cache if it doesn't exist or if a specific property is not requested (update all)
-    if ($Force -or (! (Test-Path -Path $Path) -or ! $Property)) {
+    if ($Force -or (! (Test-Path -Path $Path)) -or (! $Property)) {
         Write-Verbose 'Creating new cache object'
         $cache = New-Object -TypeName psobject -Property @{
             LastUpdate = $today;
             Customers = New-Object -TypeName psobject -Property @{
                 LastUpdate = $today;
-                Value = ((Get-NCCustomer) | Sort-Object -Property customerid);
+                Value = ((Get-NCCustomer -NoCacheUpdate) | Sort-Object -Property customerid);
             }
         }
     }
 
-    if ($Property) {
-        # Import existing cache if not in memory already from update above
-        if (! $cache) {
-            Write-Verbose "Importing existing cache from: [$Path]"
-            $cache = Import-Clixml -Path $Path -ErrorAction Stop
-        }
-        
+    if ($Property) {    
+        # Import existing cache
+        Write-Verbose "Importing existing cache from: [$Path]"
+        $cache = Import-Clixml -Path $Path -ErrorAction Stop
+    
         # If property exists, update. Add member otherwise
         if ($cache.$Property.Value) {
             Write-Verbose 'Updating existing cache property'
@@ -52,6 +51,7 @@ Param (
     } 
 
     # Export to file
+    write-debug "about to write to cache"
     Write-Verbose "Exporting cache to: [$Path]"
     $cache | Export-Clixml -Path $Path -Force
 }

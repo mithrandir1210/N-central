@@ -13,14 +13,16 @@ function Get-NCCustomer {
     
 #>
 
-[CmdletBinding(DefaultParameterSetName=' ')]
+[CmdletBinding(DefaultParameterSetName='Default')]
 Param (
     [Parameter(Mandatory=$true, ParameterSetName='ListChildren')]
     [Parameter(Mandatory=$false, ParameterSetName='Search')]
+    [ValidateNotNullOrEmpty()]
     [int]
     $CustomerId,
 
     [Parameter(Mandatory=$false, ParameterSetName='Search')]
+    [ValidateNotNullOrEmpty()]
     [string]
     $CustomerName,
 
@@ -30,7 +32,11 @@ Param (
 
     [Parameter(Mandatory=$true, ParameterSetName='ListChildren')]
     [switch]
-    $ListChildren
+    $ListChildren,
+
+    [Parameter(Mandatory=$false)]
+    [switch]
+    $NoCacheUpdate
 )
 
     Confirm-NCConnection
@@ -55,7 +61,10 @@ Param (
     }
 
     $result = Format-NCData -Data $queryData
-    Update-NCCache -Path $Global:ncCache -Property Customers -Value $result
+
+    if ((! $NoCacheUpdate) -and (! $ListChildren) -and (! $ListSOs)) {
+        Update-NCCache -Path $Global:ncCache -Property Customers -Value $result
+    }
 
     if ($CustomerName) {
         $result = Find-ObjectByProperty -InputObject $result -Property customername -Value $CustomerName
