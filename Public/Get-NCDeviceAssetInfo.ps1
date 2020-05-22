@@ -1,4 +1,41 @@
 function Get-NCDeviceAssetInfo {
+<#
+.SYNOPSIS
+    Retrieves asset information about all of the devices that are associated with a PSA or an 
+    MSP N-central sign-in.
+    
+.PARAMETER Version
+    The type of PSA credentials are to be used (PSA or N-central).
+
+.PARAMETER TargetByDeviceId
+    Retrieve asset data by device ID.
+
+.PARAMETER TargetByDeviceName
+    Retrieve asset data by device name (longname).
+
+.PARAMETER TargetByFilterId
+    Retrieve asset data by filter ID.
+
+.PARAMETER TargetByFilterName
+    Retrieve asset data by filter name.
+
+.PARAMETER TargetByTimestamp
+    Retrieve asset data by timestamp.
+
+.PARAMETER Include
+    Categories of asset information to include.
+
+.PARAMETER Exclude
+    Categories of asset information to exclude.
+
+.PARAMETER ReturnAsLinkToFile
+    Request asset data as link to a file to download.
+
+.EXAMPLE
+
+
+#>
+
 [CmdletBinding(DefaultParameterSetName='Optional1')]
 Param (
     [Parameter(Mandatory=$false)]
@@ -25,11 +62,22 @@ Param (
     $TargetByFilterName,
 
     [Parameter(Mandatory=$false)]
+    [datetime]
+    $TargetByTimestamp,
+
+    [Parameter(Mandatory=$false)]
     [ValidateSet("asset.device", "asset.os", "asset.computersystem", "asset.processor", "asset.motherboard", "asset.raidcontroller", "asset.memory", 
             "asset.videocontroller", "asset.logicaldevice", "asset.physicaldrive", "asset.mappeddrive", "asset.mediaaccessdevice", "asset.networkadapter", 
             "asset.usbdevice", "asset.printer", "asset.port", "asset.service", "asset.application", "asset.patch", "asset.customer", "asset.socustomer")]
     [string[]]
     $Include,
+
+    [Parameter(Mandatory=$false)]
+    [ValidateSet("asset.device", "asset.os", "asset.computersystem", "asset.processor", "asset.motherboard", "asset.raidcontroller", "asset.memory", 
+            "asset.videocontroller", "asset.logicaldevice", "asset.physicaldrive", "asset.mappeddrive", "asset.mediaaccessdevice", "asset.networkadapter", 
+            "asset.usbdevice", "asset.printer", "asset.port", "asset.service", "asset.application", "asset.patch", "asset.customer", "asset.socustomer")]
+    [string[]]
+    $Exclude,
 
     [Parameter(Mandatory=$false)]
     [switch]
@@ -86,8 +134,7 @@ Param (
             foreach ($name in $TargetByFilterName) {
                 $targetList += $name
             }
-        }
-
+        } 
     }
 
     END {
@@ -101,10 +148,17 @@ Param (
             $rawSettings = @{'TargetByFilterID' = $targetList}
         } elseif ($TargetByFilterName) {
             $rawSettings = @{'TargetByFilterName' = $targetList}
+        } 
+        
+        if ($TargetByTimestamp) {
+            $formattedDate = Get-Date -Date $date -Format 'yyyy-MM-dd hh:mm:ss'
+            $rawSettings = @{'TargetByTimestamp' = $formattedDate}
         }
 
         if ($Include) {
             $rawSettings.Add("InformationCategoriesInclusion", $Include)
+        } elseif ($Exclude) {
+            $rawSettings.Add("InformationCategoriesExclusion", $Exclude)
         }
     
         if ($ReturnAsLinkToFile) {
