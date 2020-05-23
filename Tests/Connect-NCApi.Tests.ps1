@@ -19,6 +19,16 @@ Import-Module -Name Pester
 
 InModuleScope {
     Describe -Name "Sample Test" {
+        mock 'Some-Function' {
+            return $false
+        }
+
+        it 'attempts to do something' {
+            # SomeFunction -- real call
+
+            Assert-MockCalled 'Some-Function' -ParameterFilter
+        }
+
         $actual = 'test'
     
         It -Name "same case" -Test {
