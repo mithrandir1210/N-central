@@ -1,16 +1,29 @@
 function Find-ObjectByProperty {
 <#
 .SYNOPSIS
+    Retrieves one or more objects that match the provided property name and value. This is a 
+    faster replacement for 'Where-Object {$_.Property -like $Value}' command.
     
-    
-.DESCRIPTION
-    
-    
-.PARAMETER
-    
+.PARAMETER InputObject
+    The object or objects to search.
+
+.PARAMETER Property
+    The name of the InputObject property to match.
+
+.PARAMETER Value
+    The value of the InputObject property to match. Wildcards are supported unless using StrictMode.
+
+.PARAMETER FirstMatch
+    Returns the first object matched.
+
+.PARAMETER StrictMode
+    Replaces the -like operator with -ceq for a case-sensitive match.
     
 .EXAMPLE
-    
+    Find-ObjectByProperty -InputObject $processes -Property Name -Value 'notepad' 
+
+    Find all objects that have a property called 'Name' and a value of 'notepad' and return those 
+    that match.
 #>
 
 [CmdletBinding()]

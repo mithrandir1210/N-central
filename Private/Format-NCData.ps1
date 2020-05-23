@@ -1,7 +1,7 @@
 function Format-NCData {
 <#
 .SYNOPSIS
-    Converts array of objects returned by the N-central API into an array of PSObjects. 
+    Converts the array of objects returned by the N-central API into an array of PSObjects. 
 
 .DESCRIPTION
     Parses the unmodified data returned by the API into a cleaner format by removing 
@@ -9,10 +9,11 @@ function Format-NCData {
     The name of the original property is broken into tokens using "." as the delimiter different
     actions are taken based on the number of tokens and if they end in a number
     (e.g. asset.application.installdate.2). Properties that may contain date values are converted
-    to PowerShell DateTime objects based on the name of the key.
+    to PowerShell DateTime objects based on the name of the key. Boolean and integer values are
+    also converted (e.g. 'true' to [bool] $true, '123' to [uint64] 123).
 
 .PARAMETER Data
-    The object returned by the API call made using the $Global:ncConnection object.
+    The object or array of objects returned by the API call.
 
 .EXAMPLE
     $formattedData = Format-NCData -Data $queryResult
