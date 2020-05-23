@@ -1,13 +1,25 @@
 function Set-NCDeviceProperty {
 <#
 .SYNOPSIS
-    Modifies the custom device properties.
+    Modifies the custom device properties.  
     
-.DESCRIPTION
-    
-    
-.PARAMETER
-    
+.PARAMETER DeviceId
+    One or more device IDs for which to modify custom device properties.
+
+.PARAMETER DeviceName
+    One or more device names for which to modify custom device properties.
+
+.PARAMETER FilterId
+    One or more filter IDs for which to modify custom device properties.
+
+.PARAMETER FilterName
+    One or more filter names for which to modify custom device properties.
+
+.PARAMETER Label
+    The name of the device property.
+
+.PARAMETER Value
+    The value to set the device property to.
     
 .EXAMPLE
     

@@ -1,4 +1,14 @@
 function Stop-NCTaskMonitoring {
+<#
+.SYNOPSIS
+    Pauses tasks with the specified task IDs.
+    
+.PARAMETER TaskId
+    One or more task IDs to stop/pause.
+    
+.EXAMPLE
+    
+#>
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]

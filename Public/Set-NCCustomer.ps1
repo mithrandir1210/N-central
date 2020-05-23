@@ -3,6 +3,9 @@ function Set-NCCustomer {
 .SYNOPSIS
     Updates a Customer or Site in the MSP N-central server.
     
+.PARAMETER CustomerId
+    The customer ID to update.
+
 .PARAMETER CustomerName
     Desired name for the new customer or site.
 

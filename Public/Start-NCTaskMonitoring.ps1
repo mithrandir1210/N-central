@@ -1,4 +1,15 @@
 function Start-NCTaskMonitoring {
+<#
+.SYNOPSIS
+    Resumes paused tasks with the specified task IDs.  
+    
+.PARAMETER TaskId
+    One or more task IDs to start/resume.
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding()]
 Param (
     [Parameter(Mandatory=$true)]
