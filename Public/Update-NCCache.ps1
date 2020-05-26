@@ -1,4 +1,26 @@
 function Update-NCCache {
+<#
+.SYNOPSIS
+    Updates the entire cache file or a property within the cache file depending on the parameters
+    used.
+    
+.PARAMETER Path
+    The full path to the cache file. If Connect-NCApi has already been run successfully, you can use
+    $Global:ncCache for the path.
+
+.PARAMETER Property
+    A specific property to update or add to the cache file.
+
+.PARAMETER Value
+    A specific property value to update or add to the cache file.
+
+.PARAMETER Force
+    Forces a full refresh of the cache file.
+    
+.EXAMPLE
+    
+#>
+
 [CmdletBinding(DefaultParameterSetName='UpdateAll')]
 Param (
     [Parameter(Mandatory=$true, ParameterSetName='UpdateAll')]
@@ -51,7 +73,6 @@ Param (
     } 
 
     # Export to file
-    write-debug "about to write to cache"
     Write-Verbose "Exporting cache to: [$Path]"
     $cache | Export-Clixml -Path $Path -Force
 }
