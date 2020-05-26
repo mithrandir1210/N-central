@@ -18,23 +18,26 @@ Import-Module -Name $modulePath -Force
 Import-Module -Name Pester
 
 InModuleScope {
-    Describe -Name "Sample Test" {
-        mock 'Some-Function' {
+    Describe -Name "Parameter Test" {
+        mock 'Connect-NCApi' {
             return $false
         }
 
-        it 'attempts to do something' {
-            # SomeFunction -- real call
+        It 'No arguments' {
+            Connect-NCApi
 
-            Assert-MockCalled 'Some-Function' -ParameterFilter
+            Assert-MockCalled 'Connect-NCApi'
         }
 
-        $actual = 'test'
-    
-        It -Name "same case" -Test {
-            $expected = 'TEST'
-            $actual | Should BeExactly $expected
-        }
     }
 }
+
+<#
+    $actual = 'test'
+
+    It -Name "same case" -Test {
+        $expected = 'TEST'
+        $actual | Should BeExactly $expected
+    }
+#>
 
