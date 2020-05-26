@@ -40,6 +40,11 @@ Param (
     $Force
 )
 
+    if (! $Global:ncCacheEnabled) {
+        Write-Verbose "Cache is disabled."
+        return
+    }
+
     $today = Get-Date
 
     # Create new cache if it doesn't exist or if a specific property is not requested (update all)

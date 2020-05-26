@@ -46,6 +46,11 @@ Param (
     $Age = 24
 )
 
+    if (! $Global:ncCacheEnabled) {
+        Write-Verbose "Cache is disabled."
+        return
+    }
+
     $expiration = (Get-Date).AddHours($AgeInHours)
 
     $cache = Import-Clixml -Path $Path -ErrorAction Stop
