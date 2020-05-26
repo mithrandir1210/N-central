@@ -60,6 +60,14 @@ Param (
 
     [Parameter(Mandatory=$false)]
     [switch]
+    $NoCache,
+
+    [Parameter(Mandatory=$false, HelpMessage = "The timeout in minutes.")]
+    [uint64]
+    $Timeout = 5,
+
+    [Parameter(Mandatory=$false)]
+    [switch]
     $Force
 )
 
@@ -76,11 +84,16 @@ Param (
         Write-Verbose "Creating new connection"
 
         $Global:ncNamespace = "Ncentral" + ([guid]::NewGuid()).ToString().Substring(25)
-
         $Global:ncCache = $Cache
-    
+        $Global:ncCacheEnabled = (! $NoCache)
+        
+        $timeoutMS = $Timeout * 60 * 1000
+
         # Setup new proxy object to use for later methods
-        $Global:ncConnection = New-WebServiceProxy -Uri $Wsdl -Namespace ($Global:ncNamespace) -Credential $Credential
+        $Global:ncConnection = New-WebServiceProxy -Uri $Wsdl -Namespace ($Global:ncNamespace) -Credential $Credential 
+
+        # Set timeout. Cmdlet default is normally 100000 ms (1.67 min)
+        $Global:ncConnection.Timeout = $timeoutMS
     }
 
     # Test connection by querying customer list (SOs only for faster return)
