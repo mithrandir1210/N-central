@@ -78,7 +78,7 @@ Param (
             $Credential = Get-Credential -Message 'N-central API Credentials'
         }
         if (! $Wsdl) {
-            $Wsdl = Read-Host -Prompt 'N-central WSDL Uri'
+            $Wsdl = Read-Host -Prompt 'N-central WSDL URI'
         }
         
         Write-Verbose "Creating new connection"
