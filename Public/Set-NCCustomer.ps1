@@ -200,7 +200,7 @@ Param (
         $isNewCustomerData = $false
 
         if (! ($allCustomers = Import-NCCache -Property Customers) ) {
-            Write-Verbose "Customers not found in cache. Retrieving customers."
+            Write-Verbose 'Customers not found in cache. Retrieving customers.'
             $allCustomers = Get-NCCustomer
             $isNewCustomerData = $true
         }
@@ -354,8 +354,8 @@ Param (
     
             # Make API call to set the values
             try {
-                Write-Verbose "Executing API call: customerModify"
-                Write-Debug "Executing API call: customerModify"
+                Write-Verbose 'Executing API call: customerModify'
+                Write-Debug 'Executing API call: customerModify'
                 $successfulIds += $Global:ncConnection.customerModify($username, $password, $settings)
             } catch {
                 Write-Error $_.Exception.Message

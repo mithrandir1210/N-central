@@ -30,7 +30,7 @@ Param (
 
         $argumentCount = $DeviceId.Count + $ApplianceId.Count
         if ($argumentCount -lt 1 -and (! $MyInvocation.ExpectingInput) ) {
-            throw (New-Object -TypeName System.ArgumentException -ArgumentList "No arguments specified.")
+            throw (New-Object -TypeName System.ArgumentException -ArgumentList 'No arguments specified.')
         }
     
         $username = $Global:ncConnection.Credentials.Username

@@ -62,7 +62,7 @@ Param (
     [switch]
     $NoCache,
 
-    [Parameter(Mandatory=$false, HelpMessage = "The timeout in minutes.")]
+    [Parameter(Mandatory=$false, HelpMessage = 'The timeout in minutes.')]
     [uint64]
     $Timeout = 5,
 
@@ -72,7 +72,7 @@ Param (
 )
 
     if ($ReuseConnection -and $Global:ncConnection) {
-        Write-Verbose "Attempting to reuse the connection"
+        Write-Verbose 'Attempting to reuse the connection'
     } else {
         if (! $Credential) {
             $Credential = Get-Credential -Message 'N-central API Credentials'
@@ -81,9 +81,9 @@ Param (
             $Wsdl = Read-Host -Prompt 'N-central WSDL URI'
         }
         
-        Write-Verbose "Creating new connection"
+        Write-Verbose 'Creating new connection'
 
-        $Global:ncNamespace = "Ncentral" + ([guid]::NewGuid()).ToString().Substring(25)
+        $Global:ncNamespace = 'Ncentral' + ([guid]::NewGuid()).ToString().Substring(25)
         $Global:ncCache = $Cache
         $Global:ncCacheEnabled = (! $NoCache)
         
@@ -107,14 +107,14 @@ Param (
     $queryData = $Global:ncConnection.customerList($username, $password, $settings)
 
     if ($queryData) {
-        Write-Verbose "N-central API connected successfully"
+        Write-Verbose 'N-central API connected successfully'
 
         if (! (Test-Path -Path $Cache) -or $Force) {
-            Write-Verbose "Updating cache..."
+            Write-Verbose 'Updating cache...'
             Update-NCCache -Path $Cache
         }
     } else {
         Disconnect-NCAPI
-        throw "Failed to connect to the N-central API"
+        throw 'Failed to connect to the N-central API'
     }
 }

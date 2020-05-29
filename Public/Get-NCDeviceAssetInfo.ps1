@@ -66,16 +66,16 @@ Param (
     $TargetByTimestamp,
 
     [Parameter(Mandatory=$false)]
-    [ValidateSet("asset.device", "asset.os", "asset.computersystem", "asset.processor", "asset.motherboard", "asset.raidcontroller", "asset.memory", 
-            "asset.videocontroller", "asset.logicaldevice", "asset.physicaldrive", "asset.mappeddrive", "asset.mediaaccessdevice", "asset.networkadapter", 
-            "asset.usbdevice", "asset.printer", "asset.port", "asset.service", "asset.application", "asset.patch", "asset.customer", "asset.socustomer")]
+    [ValidateSet('asset.device', 'asset.os', 'asset.computersystem', 'asset.processor', 'asset.motherboard', 'asset.raidcontroller', 'asset.memory', 
+            'asset.videocontroller', 'asset.logicaldevice', 'asset.physicaldrive', 'asset.mappeddrive', 'asset.mediaaccessdevice', 'asset.networkadapter', 
+            'asset.usbdevice', 'asset.printer', 'asset.port', 'asset.service', 'asset.application', 'asset.patch', 'asset.customer', 'asset.socustomer')]
     [string[]]
     $Include,
 
     [Parameter(Mandatory=$false)]
-    [ValidateSet("asset.device", "asset.os", "asset.computersystem", "asset.processor", "asset.motherboard", "asset.raidcontroller", "asset.memory", 
-            "asset.videocontroller", "asset.logicaldevice", "asset.physicaldrive", "asset.mappeddrive", "asset.mediaaccessdevice", "asset.networkadapter", 
-            "asset.usbdevice", "asset.printer", "asset.port", "asset.service", "asset.application", "asset.patch", "asset.customer", "asset.socustomer")]
+    [ValidateSet('asset.device', 'asset.os', 'asset.computersystem', 'asset.processor', 'asset.motherboard', 'asset.raidcontroller', 'asset.memory', 
+            'asset.videocontroller', 'asset.logicaldevice', 'asset.physicaldrive', 'asset.mappeddrive', 'asset.mediaaccessdevice', 'asset.networkadapter', 
+            'asset.usbdevice', 'asset.printer', 'asset.port', 'asset.service', 'asset.application', 'asset.patch', 'asset.customer', 'asset.socustomer')]
     [string[]]
     $Exclude,
 
@@ -156,16 +156,16 @@ Param (
         }
 
         if ($Include) {
-            $rawSettings.Add("InformationCategoriesInclusion", $Include)
+            $rawSettings.Add('InformationCategoriesInclusion', $Include)
         } elseif ($Exclude) {
-            $rawSettings.Add("InformationCategoriesExclusion", $Exclude)
+            $rawSettings.Add('InformationCategoriesExclusion', $Exclude)
         }
     
         if ($ReturnAsLinkToFile) {
-            $rawSettings.Add("ReturnAsLinkToFile", $true)
+            $rawSettings.Add('ReturnAsLinkToFile', $true)
         }
     
-        $settings = ConvertTo-NCSettings -Settings $rawSettings -Type "tKeyValue"
+        $settings = ConvertTo-NCSettings -Settings $rawSettings -Type 'tKeyValue'
     
         $queryData = $Global:ncConnection.deviceAssetInfoExportDeviceWithSettings($versionId, $username, $password, $settings)
     

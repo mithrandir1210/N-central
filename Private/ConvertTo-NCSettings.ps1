@@ -31,7 +31,7 @@ Param (
     $Settings,
     
     [Parameter(Mandatory=$false)]
-    [ValidateSet("tKeyPair", "tKeyValue")]
+    [ValidateSet('tKeyPair', 'tKeyValue')]
     [string]
     $Type = 'tKeyPair'
 )

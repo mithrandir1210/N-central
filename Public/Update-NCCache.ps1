@@ -41,7 +41,7 @@ Param (
 )
 
     if (! $Global:ncCacheEnabled) {
-        Write-Verbose "Cache is disabled."
+        Write-Verbose 'Cache is disabled.'
         return
     }
 

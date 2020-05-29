@@ -32,7 +32,7 @@ Param (
     } elseif ($arrayName = $Data | Get-Member -MemberType Property | Where-Object {$_.Definition -like "*.tKeyValue*"} | Select-Object -ExpandProperty Name) {
         Write-Verbose "Identified $property as the tKeyValue array"
     } else {
-        Write-Verbose "tKeyPair property not identified. Using unmodified tKeyValue property."
+        Write-Verbose 'tKeyPair property not identified. Using unmodified tKeyValue property.'
         return $Data
     }
     
@@ -58,7 +58,7 @@ Param (
             $instanceNumber = $tokens[2]
 
             # Convert date values if key name appears to be a date -- may need to clean conditions up eventually???
-            if ($property.Value -and ($property.Key -like "*date*" -or $property.Key -like "*time*" -or $property.Key -like "*createdon*")) {      
+            if ($property.Value -and ($property.Key -like '*date*' -or $property.Key -like '*time*' -or $property.Key -like '*createdon*')) {      
                 try {
                     if ($property.Value -is [System.Array] -and ($property.Value).Count -eq 1) {
                         $newValue = Get-Date $property.Value[0]
@@ -68,9 +68,9 @@ Param (
                 } catch {
                     $newValue = $property.Value
                 }
-            } elseif ($property.Value -like "true") {
+            } elseif ($property.Value -like 'true') {
                 $newValue = $true
-            } elseif ($property.Value -like "false") {
+            } elseif ($property.Value -like 'false') {
                 $newValue = $false
             } else {
                 # Convert arrays with one element to single object
@@ -80,7 +80,7 @@ Param (
                     $newValue = $property.Value
                 }
                 # Convert to int if all numbers
-                if ($property.Value -match "^\d+$") {
+                if ($property.Value -match '^\d+$') {
                     $newValue = [uint64] $newValue
                 }
             }

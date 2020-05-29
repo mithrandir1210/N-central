@@ -40,18 +40,18 @@ Param (
     $SearchBy,
 
     [Parameter(Mandatory=$false)]
-    [ValidateSet("customername", "devicename", "servicename", "status", "transitiontime", "numberofacknoledgednotification",
-            "serviceorganization", "deviceclass", "licensemode", "endpointsecurity")]
+    [ValidateSet('customername', 'devicename', 'servicename', 'status', 'transitiontime', 'numberofacknoledgednotification',
+            'serviceorganization', 'deviceclass', 'licensemode', 'endpointsecurity')]
     [string]
     $OrderBy = 'customername',
 
     [Parameter(Mandatory=$false)]
-    [ValidateSet("no data", "stale", "normal", "warning", "failed", "misconfigured", "disconnected")]
+    [ValidateSet('no data', 'stale', 'normal', 'warning', 'failed', 'misconfigured', 'disconnected')]
     [string[]]
     $StatusFilter,
 
     [Parameter(Mandatory=$false)]
-    [ValidateSet("Acknowledged", "Unacknowledged")]
+    [ValidateSet('Acknowledged', 'Unacknowledged')]
     [string]
     $NotificationFilter,
 
