@@ -58,13 +58,19 @@ Param (
 
         foreach ($id in $DeviceId) {
             $queryData = $Global:ncConnection.devicePropertyList($username, $password, $id, $DeviceName, $FilterId, $FilterName, $ReverseOrder)
-            $results += Format-NCData -Data $queryData
+            if ($queryData) {
+                $results += Format-NCData -Data $queryData
+            }
         }
         
     }
 
     END {
-        return $results
+        if ( ($results | Measure-Object).Count -gt 0) {
+            return $results
+        }
+        
+        return
     }
 
 }

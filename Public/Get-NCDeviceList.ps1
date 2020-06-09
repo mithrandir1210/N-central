@@ -62,7 +62,9 @@ Param (
         
             $queryData = $Global:ncConnection.DeviceList($username, $password, $settings)
     
-            $results += Format-NCData -Data $queryData
+            if ($queryData) {
+                $results += Format-NCData -Data $queryData
+            }
         }
     }
 

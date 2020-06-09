@@ -100,11 +100,17 @@ Param (
     
         $queryData = $Global:ncConnection.activeIssuesList($username, $password, $settings)
     
-        $results += Format-NCData -Data $queryData
+        if ($queryData) {
+            $results += Format-NCData -Data $queryData
+        }
     }
 
     END {
-        return $results
+        if ( ($results | Measure-Object).Count -gt 0 ) {
+            return $results
+        }
+        
+        return
     }
 
 }

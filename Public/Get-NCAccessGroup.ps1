@@ -59,5 +59,9 @@ Param (
         $queryData = $Global:ncConnection.accessGroupGet($username, $password, $settings)
     }
     
-    return (Format-NCData -Data $queryData)
+    if ($queryData) {
+        $results = Format-NCData -Data $queryData
+    }
+    
+    return $results
 }

@@ -22,5 +22,9 @@ Param (
 
     $queryData = $Global:ncConnection.taskPauseMonitoring($username, $password, $TaskId)
 
-    return (Format-NCData -Data $queryData)
+    if ($queryData) {
+        $results = Format-NCData -Data $queryData
+    }
+
+    return $results
 }

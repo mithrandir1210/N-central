@@ -54,7 +54,11 @@ Param (
         $settings = ConvertTo-NCSettings -Settings $rawSettings
         $queryData = $Global:ncConnection.deviceGet($username, $password, $settings)
     
-        return (Format-NCData -Data $queryData)
+        if ($queryData) {
+            $results = Format-NCData -Data $queryData
+        }
+
+        return $results
     }
 
 }

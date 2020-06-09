@@ -169,7 +169,11 @@ Param (
     
         $queryData = $Global:ncConnection.deviceAssetInfoExportDeviceWithSettings($versionId, $username, $password, $settings)
     
-        return (Format-NCData -Data $queryData)
+        if ($queryData) {
+            $results = Format-NCData -Data $queryData
+        }
+
+        return $results
     }
 
 }

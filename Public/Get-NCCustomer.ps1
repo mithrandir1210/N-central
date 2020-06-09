@@ -72,18 +72,20 @@ Param (
         $queryData = $Global:ncConnection.customerList($username, $password, $settings)
     }
 
-    $result = Format-NCData -Data $queryData
+    if ($queryData) {
+        $results = Format-NCData -Data $queryData
 
-    if ((! $NoCacheUpdate) -and (! $ListChildren) -and (! $ListSOs)) {
-        Update-NCCache -Path $Global:ncCache -Property Customers -Value $result
-    }
+        if ((! $NoCacheUpdate) -and (! $ListChildren) -and (! $ListSOs)) {
+            Update-NCCache -Path $Global:ncCache -Property Customers -Value $results
+        }
+    
+        if ($CustomerName) {
+            $results = Find-ObjectByProperty -InputObject $results -Property customername -Value $CustomerName
+        }
+        if ( (! $ListChildren) -and $CustomerId ) {
+            $results = Find-ObjectByProperty -InputObject $results -Property customerid -Value $CustomerId
+        }
+    } 
 
-    if ($CustomerName) {
-        $result = Find-ObjectByProperty -InputObject $result -Property customername -Value $CustomerName
-    }
-    if ( (! $ListChildren) -and $CustomerId ) {
-        $result = Find-ObjectByProperty -InputObject $result -Property customerid -Value $CustomerId
-    }
- 
-    return $result
+    return $results
 }

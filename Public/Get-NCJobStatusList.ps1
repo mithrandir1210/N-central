@@ -29,5 +29,9 @@ Param (
 
     $queryData = $Global:ncConnection.jobStatusList($username, $password, $settings)
 
-    return (Format-NCData -Data $queryData)
+    if ($queryData) {
+        $results = Format-NCData -Data $queryData
+    }
+
+    return $results
 }

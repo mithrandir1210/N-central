@@ -31,10 +31,10 @@ Param (
     
     # Make API call to delete the customer
     try {
-        $result = $Global:ncConnection.customerDelete($username, $password, $settings)
+        $results = $Global:ncConnection.customerDelete($username, $password, $settings)
     } catch {
         Write-Error $_.Exception.Message
     }
 
-    return $result
+    return $results
 }
