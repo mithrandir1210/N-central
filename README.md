@@ -52,7 +52,7 @@ Get-Help -Name Connect-NCApi -Full
 ## Built Against
 
 * PowerShell 5.1
-* N-central 12.2.1.280
+* Solarwinds N-central 12.2.1.280
 
 ## Authors
 
